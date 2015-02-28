@@ -30,9 +30,9 @@ def writeCoords(x,y,nline = False,reset = False):
 
 	coords = open("coords.txt", 'a')
 	if(nline):
-		coords.write("-\n")
+		coords.write("-"+"\n")
 	else:
-		c1 = str(x) + "," + str(y) +"\n"
+		c1 = str(x) + "," + str(y) + "\n"
 		coords.write(c1)
 	
 	coords.close()
@@ -70,6 +70,8 @@ def main():
 					print "-"
 					writeCoords(0,0,True, False)
 				elif event.key == pygame.K_r:
+					# reset coords.txt file
+					print "reset"
 					writeCoords(0,0,False, True)
 
 		

@@ -1,6 +1,7 @@
 # Mohammad Saad
 # 2/28/2015
 # TO use, put the camera in the spots you want to track, and then 
+# run the script. Then mark the images with the corners of the parking spot, and run 
 # 
 
 
@@ -21,6 +22,8 @@ def main():
 	img = getImage(cam)
 	cv2.imwrite("calibrate.png", img)
 	del(cam)
+
+def draw
 
 
 if __name__ == '__main__':
