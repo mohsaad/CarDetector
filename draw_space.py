@@ -55,9 +55,6 @@ def main():
 
 	screen.blit(image, (0, 0))
 	while keepGoing:
-		
-		
-
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				keepGoing = False
@@ -72,8 +69,8 @@ def main():
 					# define new parking space
 					print "-"
 					writeCoords(0,0,True, False)
-
-
+				elif event.key == pygame.K_r:
+					writeCoords(0,0,False, True)
 
 		
 
