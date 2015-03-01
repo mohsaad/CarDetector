@@ -74,6 +74,7 @@ def persp_transform(image, pts):
 
 	# compute transform
 	M = cv2.getPerspectiveTransform(rect, dst)
+	#print image
 	warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))
 
 	# return

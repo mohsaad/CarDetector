@@ -14,16 +14,22 @@ def checkDiff(image):
 	i = 0
 	for a in arr:
 		pts = np.array(arr[i], dtype = "float32")
-		warped = detect_space.persp_transform(image, arr[i])
+		print arr[i]
+		warped = detect_space.persp_transform(image[1], arr[i])
 		img_list.append(warped)
 		i += 1
 
 	total_img = i
 	i = 0
 
-	img2 = cv2.imread("0.png")
-	img3 = diffImage(img_list[0], img2)
-	cv2.imshow("img3", img3)
+	diff_vals = []
+	while i < total_img:
+		img2 = cv2.imread(str(i) + ".png")
+		temp = abs(diffImage(img_list[i], img2))
+		diff_vals.append(isOccupied(temp))
+		i += 1
+
+	return diff_vals
 
 def diffImage(img1, img2):
 	grey1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -41,7 +47,6 @@ def isOccupied(diff):
 		return 1
 	
 	return 0
-
 
 
 

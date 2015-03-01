@@ -9,6 +9,9 @@ import pygame
 import cv2
 import numpy as np
 import os
+import argparse
+
+
 
 
 
@@ -40,10 +43,11 @@ def writeCoords(x,y,nline = False,reset = False):
 
 
 
-def main():
+def main(filename):
 	pygame.init()
-	image = loadImage("calibrate.png")
-	(x,y,z) = sizeImage("calibrate.png")
+	link = filename
+	image = loadImage(link)
+	(x,y,z) = sizeImage(link)
 
 	pygame.display.set_caption("Stuff")
 	screen = pygame.display.set_mode((y,x))
@@ -81,4 +85,7 @@ def main():
 		clock.tick(120)
 
 if __name__ == '__main__':
-	main()
+	ap = argparse.ArgumentParser()
+	ap.add_argument("-i", "--image", help = "path to image")
+	args = vars(ap.parse_args())
+	main(args["image"])

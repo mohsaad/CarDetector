@@ -20,7 +20,7 @@ def main():
 	cam = cv2.VideoCapture(camera_port)
 
 	img = getImage(cam)
-	cv2.imwrite("calibrate2.png", img)
+	cv2.imwrite("calibrate.png", img)
 	del(cam)
 
 
