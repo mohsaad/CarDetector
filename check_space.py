@@ -7,15 +7,15 @@ import numpy as np
 import detect_space
 import math
 
-def checkDiff(image):
+def checkDiff(filename):
 
 	arr = detect_space.loadCoords("coords.txt")
 	img_list = []
 	i = 0
+	image = cv2.imread(filename)
 	for a in arr:
-		pts = np.array(arr[i], dtype = "float32")
-		print arr[i]
-		warped = detect_space.persp_transform(image[1], arr[i])
+		warped = detect_space.persp_transform(image, arr[i])
+		
 		img_list.append(warped)
 		i += 1
 
@@ -32,7 +32,9 @@ def checkDiff(image):
 	return diff_vals
 
 def diffImage(img1, img2):
-	grey1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+	#grey1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+	
+	grey1 = img1
 	grey2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
 	hist1 = cv2.calcHist([grey1], [0], None, [256], [0,256])

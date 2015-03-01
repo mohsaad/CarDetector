@@ -84,7 +84,8 @@ def persp_transform(image, pts):
 
 # main method, runs every time
 def main():
-	img = cv2.imread("calibrate.png")
+        link = "onecar.jpg"
+	img = cv2.imread(link)
 	arr = loadCoords("coords.txt")
 	i = 0
 	for coords in arr:
