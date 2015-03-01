@@ -72,12 +72,13 @@ def main():
 				elif event.key == pygame.K_r:
 					# reset coords.txt file
 					print "reset"
+					screen.blit(image, (0,0))
 					writeCoords(0,0,False, True)
 
 		
 
 		pygame.display.flip()
-		clock.tick(100)
+		clock.tick(120)
 
 if __name__ == '__main__':
 	main()

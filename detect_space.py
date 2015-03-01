@@ -22,7 +22,7 @@ def loadCoords(filename):
 	with open(filename) as f:
 		for line in f:
 			#print line
-			if line == "-" or line == "":
+			if line == "-\n" or line == "":
 				totalArray.append(coordArray)
 				coordArray = []
 			else:
@@ -39,7 +39,7 @@ def order_points(pts):
 	# initialize array of zeros
 	rect = np.zeros((4,2),dtype = 'float32')
 	
-	s = pts.sum(axis = 1)
+	s = np.sum(pts, axis = 1)
 	rect[0] = pts[np.argmin(s)]
 	rect[2] = pts[np.argmax(s)]
 
@@ -86,15 +86,15 @@ def main():
 	img = cv2.imread("calibrate.png")
 	arr = loadCoords("coords.txt")
 	i = 0
-
 	for coords in arr:
 		pts = np.array(arr[i], dtype = "float32")
 		warped = persp_transform(img, pts)
 		cv2.imwrite(str(i) +".png", warped)
+		i += 1
 
 
 	print "reference images calculated"
-	
+
 
 if __name__ == '__main__':
 	main()
